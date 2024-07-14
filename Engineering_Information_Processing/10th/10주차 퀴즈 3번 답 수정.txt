@@ -1,0 +1,56 @@
+#include<stdio.h>
+void copy(double a[4],double b[4],int n)
+{
+	int i;
+	for(i=0;i<n;i++){
+		b[i]=a[i];
+	}
+}
+int main()
+{
+	int score[4][4]={{90,40,75,42},
+		{95,97,92,88},
+		{100,30,40,100},
+		{70,75,80,77}};
+	int grade[4]={0};
+	int i,j,sum=0,index;
+	double avr[4]={0};
+	double O[4]={0};
+	double change;
+	for(i=0;i<4;i++){
+		sum=0;
+		for(j=0;j<4;j++){
+			sum+=score[i][j];
+		}
+		avr[i]=sum/4.0;
+	}
+	copy(avr,O,4);
+	for(i=0;i<4;i++){
+		change=O[i];
+		index=i;
+		for(j=i;j<4;j++){
+			if(change<O[j]){
+				change=O[j];
+				index=j;
+			}
+		}
+		O[index]=O[i];
+		O[i]=change;
+	}
+	for(i=0;i<4;i++){
+		for(j=0;j<4;j++){
+			if(avr[i]==O[j]){
+				grade[i]=j+1;
+			}
+		}
+	}
+	printf(" \t수학 \t영어 \t국어 \t과학 \t석차\n");
+	for(i=0;i<4;i++){
+		printf("%c\t",'A'+i);
+		for(j=0;j<4;j++){
+			printf("%-3d\t",score[i][j]);
+		}
+		printf("%d\n",grade[i]);
+	}
+	return 0;
+}

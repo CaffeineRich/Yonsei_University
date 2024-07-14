@@ -1,0 +1,24 @@
+#include<stdio.h>
+int main()
+{
+	int i,j=0,N,K;
+	printf("N과 K를 입력하시오 : ");
+	scanf("%d %d",&N,&K);
+	if(N>=K){
+		printf("N<K인 숫자를 입력해주세요.\n");
+	}
+	else{
+		for(i=K;i>=N;i--){
+			if(i%3==0){
+				j=i;
+			}
+		}
+		if(j==0){
+		printf("%d와 %d 사이에는 3의 배수가 없습니다.\n",N,K);
+		}
+		else{
+			printf("%d와 %d 사이의 가장 작은 3의 배수 : %d\n",N,K,j);
+		}
+	}
+	return 0;
+}
